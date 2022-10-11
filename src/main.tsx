@@ -1,24 +1,20 @@
-import { StatusBar } from 'expo-status-bar'
-import { Text } from 'react-native'
 import { FC } from 'react'
-import styled from 'styled-components/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { Home } from './components/pages/Home'
+import { StatusBar } from 'expo-status-bar'
 
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`
-
-const HeWo = styled.Text`
-  font-weight: bold;
-  font-size: 25px;
-`
+const Stack = createNativeStackNavigator()
 
 export const Main: FC = () => {
   return (
-    <Container>
-      <HeWo>Hello world</HeWo>
-      <StatusBar style='auto' />
-    </Container>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name={'Home'} component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar hidden/>
+    </>
   )
 }
